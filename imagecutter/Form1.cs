@@ -103,7 +103,7 @@ namespace imagecutter
                     int Y = y;
                     string baseName = String.Format("/map_{0}_{1}", X, Y);
                     log("clone");
-                    MagickImage croppedImage = img.Clone();
+                    MagickImage croppedImage = (MagickImage)img.Clone();
                     log("crop");
                     croppedImage.Crop(size * X, size * Y, size, size);
                     if (croppedImage.Width < size || croppedImage.Height < size)
@@ -151,7 +151,8 @@ namespace imagecutter
                 log("init magick image object from source");
                 MagickImage img = new MagickImage(sourcePath);
                 img.Format = MagickFormat.Dds;
-                img.CompressionMethod = CompressionMethod.DXT1;
+                img.Settings.Compression = Compression.DXT1;
+                //img.CompressionMethod = CompressionMethod.DXT1;
                 log("set main progress bar maximum value to " + ((int)nudIterations.Value - 1));
                 pbMain.Invoke(new Action(() => pbMain.Maximum = (int)nudIterations.Value-1));
                 pbMain.Value = 0;
