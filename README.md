@@ -10,5 +10,5 @@
 5. Press "Start" button
 
 ## Requirements:
-* .NET Framework
+* [.NET Framework v4.6.1+](https://www.microsoft.com/ru-ru/download/details.aspx?id=49982)
 * Windows x64
